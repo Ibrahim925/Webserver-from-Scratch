@@ -15,7 +15,7 @@ namespace IKB
 			int connection;
 		public:
 			// Constructor
-			Socket(int domain, int service, int protocol, int port, u_long interaface);
+			Socket(int domain, int service, int protocol, int port, u_long interface);
 
 			// Virtual method that connects (binds) to network
 			virtual int connect_to_network(int sock, struct sockaddr_in address) = 0;
