@@ -1,10 +1,11 @@
-CC=clang++
-STD=c++17
-SRC=$$(find src -name *.cpp)
-INC=./inc
-BIN=IKB
+CC     =clang++                  #Compiler
+CCFLAGS=-Wall                    #Compiler flags
+STD    =c++17                    #Standard
+SRC    =$$(find src -name *.cpp) #Source files
+INC    =inc                      #Include path for headers
+BIN    =IKB                      #Binary name
 
 default: build
 
 build:
-	$(CC) -std=$(STD) $(SRC) -I$(INC) -o ./bin/$(BIN)
+	$(CC) -std=$(STD) $(CCFLAGS) $(SRC) -I$(INC) -o ./bin/$(BIN)
