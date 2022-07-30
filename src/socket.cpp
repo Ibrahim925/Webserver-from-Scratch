@@ -1,4 +1,3 @@
-#include <netinet/in.h>
 #include "Socket.hpp"
 
 // Default constructor
@@ -12,10 +11,6 @@ IKB::Socket::Socket(int domain, int service, int protocol, int port, u_long inte
 	// Create socket
 	sock = socket(domain, service, protocol);
 	test_connection(sock);
-
-	// Create network connection
-	connection = connect_to_network(sock, address);	
-	test_connection(connection);
 }
 
 // Test connection
@@ -43,4 +38,10 @@ int IKB::Socket::get_connection()
 int IKB::Socket::get_sock()
 {
 	return sock;
+}
+
+// Setters
+void IKB::Socket::set_connection(int con)
+{
+	connection = con;
 }

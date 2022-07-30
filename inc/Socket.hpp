@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <sys/socket.h>
 #include <iostream>
+#include <netinet/in.h>
 
 namespace IKB
 {
@@ -27,5 +28,8 @@ namespace IKB
 			struct sockaddr_in get_address();
 			int get_sock();
 			int get_connection();
+
+			// Setters
+			void set_connection(int con);
 	};
 }
