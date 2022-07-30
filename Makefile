@@ -2,7 +2,7 @@ CC=clang++
 STD=c++17
 SRC=$$(find src -name *.cpp)
 INC=./inc
-BIN=webserver
+BIN=IKB
 
 default: build
 

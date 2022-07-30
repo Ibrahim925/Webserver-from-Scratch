@@ -1,4 +1,4 @@
-#include "Socket.hpp"
+#include "Webserver/Sockets/Socket.hpp"
 
 // Default constructor
 IKB::Socket::Socket(int domain, int service, int protocol, int port, u_long interface)
@@ -30,18 +30,8 @@ struct sockaddr_in IKB::Socket::get_address()
 	return address;
 }
 
-int IKB::Socket::get_connection()
-{
-	return connection;
-}
-
 int IKB::Socket::get_sock()
 {
 	return sock;
 }
 
-// Setters
-void IKB::Socket::set_connection(int con)
-{
-	connection = con;
-}
