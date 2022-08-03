@@ -2,6 +2,8 @@
 #include "Networking/Sockets/ListeningSocket.hpp"
 #include "Networking/Server/Server.hpp"
 
+#define PORT 80
+
 class TestServer : public IKB::Server
 {
 private:
@@ -29,7 +31,7 @@ private:
     }
 
 public:
-    TestServer() : Server(AF_INET, SOCK_STREAM, 0, 8080, INADDR_ANY, 10)
+    TestServer() : Server(AF_INET, SOCK_STREAM, 0, PORT, INADDR_ANY, 10)
     {
         launch();
     }
