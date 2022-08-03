@@ -1,4 +1,4 @@
-#include "Webserver/Sockets/BindingSocket.hpp"
+#include "Networking/Sockets/BindingSocket.hpp"
 
 // Constructor
 IKB::BindingSocket::BindingSocket(int domain, int service, int protocol, int port, u_long interface) : 

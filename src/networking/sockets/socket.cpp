@@ -1,4 +1,4 @@
-#include "Webserver/Sockets/Socket.hpp"
+#include "Networking/Sockets/Socket.hpp"
 
 // Default constructor
 IKB::Socket::Socket(int domain, int service, int protocol, int port, u_long interface)

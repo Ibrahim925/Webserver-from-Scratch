@@ -1,4 +1,4 @@
-#include "Webserver/Sockets/ListeningSocket.hpp"
+#include "Networking/Sockets/ListeningSocket.hpp"
 
 IKB::ListeningSocket::ListeningSocket(int domain, int service, int protocol, int port, u_long interface, int bklog) : 
 	BindingSocket(domain, service, protocol, port, interface)
