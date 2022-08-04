@@ -1,55 +1,44 @@
+#include "Networking/Server/Server.hpp"
 #include "Networking/Sockets/BindingSocket.hpp"
 #include "Networking/Sockets/ListeningSocket.hpp"
-#include "Networking/Server/Server.hpp"
 
 #define PORT 80
 
-class TestServer : public IKB::Server
-{
+class TestServer : public IKB::Server {
 private:
-    char buffer[30000] = {0};
-    int new_socket;
+  char buffer[30000] = {0};
+  int new_socket;
 
-    void listener()
-    {
-        struct sockaddr_in address = get_socket()->get_address();
-        int addrlen = sizeof(address);
-        new_socket = accept(get_socket()->get_sock(), (struct sockaddr *)&address, (socklen_t *)&addrlen);
-        read(new_socket, buffer, 30000);
-    }
+  void listener() {
+    struct sockaddr_in address = get_socket()->get_address();
+    int addrlen = sizeof(address);
+    new_socket = accept(get_socket()->get_sock(), (struct sockaddr *)&address,
+                        (socklen_t *)&addrlen);
+    read(new_socket, buffer, 30000);
+  }
 
-    void handler()
-    {
-        std::cout << buffer << std::endl;
-    }
+  void handler() { std::cout << buffer << std::endl; }
 
-    void responder()
-    {
-        char *hello = "Hello, world!";
-        write(new_socket, hello, strlen(hello));
-        close(new_socket);
-    }
+  void responder() {
+    char *hello = "Hello, world!";
+    write(new_socket, hello, strlen(hello));
+    close(new_socket);
+  }
 
 public:
-    TestServer() : Server(AF_INET, SOCK_STREAM, 0, PORT, INADDR_ANY, 10)
-    {
-        launch();
-    }
+  TestServer() : Server(AF_INET, SOCK_STREAM, 0, PORT, INADDR_ANY, 10) {
+    launch();
+  }
 
-    void launch()
-    {
-        while (1)
-        {
-            std::cout << "========WATING=========" << std::endl;
-            listener();
-            handler();
-            responder();
-            std::cout << "========DONE=========" << std::endl;
-        }
+  void launch() {
+    while (1) {
+      std::cout << "========WATING=========" << std::endl;
+      listener();
+      handler();
+      responder();
+      std::cout << "========DONE=========" << std::endl;
     }
+  }
 };
 
-int main()
-{
-    TestServer server;
-}
+int main() { TestServer server; }
